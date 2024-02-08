@@ -1,23 +1,30 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SearchInput from "./components/SearchInput";
-import UserInfo from "./components/UserInfo";
 import { User } from "./interfaces";
 import axiosInstance from "./api";
+import UserList from "./components/UserList/UserList.tsx";
 
 
 function App() {
-  const [searchValue, setSearchValue] = useState<string>("");
-  const [user, setUser] = useState<Partial<User>>(null)
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [users, setUsers] = useState<Partial<User[]>>([])
   const [errorMsg, setErrorMsg] = useState<string>('')
 
   useEffect(() => {
     async function fetchUser() {
       if (searchValue) {
         try {
-          const result = await axiosInstance.get(`/users/${searchValue}`);
+          const result = await axiosInstance.get(`/users/${searchValue}`)
+          const { id } = result.data as User
           setErrorMsg('')
-          console.table(result);
-          setUser(result.data)
+          if (users.some(user => user.id === id )) {
+           return 
+          }
+          setUsers([...users, result.data])
+          //Смотрим в консоли результат поиска юзеров
+          console.log(result)
+
+   
         } catch (e) {
           setErrorMsg(e.message)
         }
@@ -32,9 +39,8 @@ function App() {
 
   return (
       <div>
-        <button className="Button">Кнопка</button>
         <SearchInput handleChange={handleSearch} />
-        {user && <UserInfo {...user} />}
+        {users.length ? <UserList users={users} /> : `Users list is empty`}
       </div>
   );
 }

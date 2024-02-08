@@ -1,4 +1,5 @@
 import React from "react";
+import debounce from 'lodash/debounce';
 
 interface Props {
   handleChange: (str: string) => void;
@@ -11,7 +12,7 @@ const SearchInput = ({ handleChange }: Props) => {
 
   return (
     <div>
-      <input type="text" onChange={handleInputChange} />
+      <input type="text" placeholder="Search" onChange={debounce(handleInputChange, 1000)} />
     </div>
   );
 };

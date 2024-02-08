@@ -5,4 +5,5 @@ export interface User {
     readonly public_repos: number
     readonly followers: number
     readonly email: string
+    readonly html_url: string
 }
