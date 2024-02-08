@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import SearchInput from "./components/SearchInput";
 import {User} from "./interfaces";
 import axiosInstance from "./api";
 import UserList from "./components/UserList/UserList.tsx";
 import './vendor/index.css'
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage.tsx";
 
 function App() {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -31,7 +32,7 @@ function App() {
       }
     }
     fetchUser();
-  }, [searchValue]);
+  }, [searchValue, users]);
 
   const handleSearch = (value: string): void => {
     setSearchValue(value);
@@ -40,6 +41,7 @@ function App() {
   return (
       <div className='main-page'>
         <SearchInput handleChange={handleSearch} />
+        {errorMsg && <ErrorMessage/>}
         {users.length ? <UserList users={users} /> : `Users list is empty`}
       </div>
   );

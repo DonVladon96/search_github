@@ -1,0 +1,6 @@
+.Error__image {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 420px;
+}
