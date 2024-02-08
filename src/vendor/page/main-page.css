@@ -1,0 +1,19 @@
+.main-page {
+    position: relative;
+    box-sizing: border-box;
+    font-family: 'SegoeUI', Arial, sans-serif;
+    font-weight: 400;
+    min-width: 320px;
+    max-width: 1400px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
