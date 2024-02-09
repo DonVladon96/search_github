@@ -1,14 +1,72 @@
 .user-card {
-    width: 300px;
+    width: 500px;
     height: 100%;
-    border: 1px solid #ccc;
-    padding: 10px;
+    border: 1px solid #b85cb2;
     text-align: center;
+    max-width: 282px;
+    margin: 0;
+    background: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
 }
 
-.card-title {
+.user-card__info {
+    color: #000;
+}
+
+.user-card__avatar {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: black;
+    display: block;
+}
+
+.user-card__title {
     font-size: 24px;
     margin-bottom: 5px;
+}
+
+.user-card__url {
+    background-image: linear-gradient(
+            to right,
+            #1200ff,
+            #23cb50 50%,
+            #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-card__url:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.user-card__url:hover {
+    background-position: 0;
+}
+
+.user-card__url:hover::before {
+    width:100%;
+}
+
+.user-card__elements {
+    font-size: 18px;
+    color: #000;
 }
 
 .subtitle {

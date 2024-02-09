@@ -1,4 +1,8 @@
 .main-page {
+    color: #fff;
+    background-image: url("../../assets/hero-desktop.webp");
+
+
     position: relative;
     box-sizing: border-box;
     font-family: 'SegoeUI', Arial, sans-serif;
