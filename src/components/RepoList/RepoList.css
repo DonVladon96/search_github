@@ -2,7 +2,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
 }
 
@@ -60,6 +60,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .repos-card__url:before {
@@ -86,6 +88,8 @@
     font-size: 18px;
     color: #000;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .repos-card__subtitle {
@@ -101,3 +105,45 @@
     border-radius: 5px;
     margin-top: 10px;
 }
+
+.repos-card__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.repos-card__wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.element__like-container {
+    display: flex;
+}
+
+.element__button-like {
+    background-image: url(../../assets/like.svg);
+    background-size: 23px 20px;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 21px;
+    background-color: transparent;
+    padding: 0;
+    border: 1px solid #ffffff;
+    border-style: none;
+}
+
+.element__button-like:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+}
+
+
+.element__button-like_active {
+    background-image: url(../../assets/like_active.svg);
+}
+
