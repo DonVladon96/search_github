@@ -1,7 +1,11 @@
+.root-container {
+    background-color: #0d1116;
+    background-image: url("../../assets/hero-desktop.webp");
+    background-repeat: repeat;
+}
+
 .main-page {
     color: #fff;
-    background-image: url("../../assets/hero-desktop.webp");
-
 
     position: relative;
     box-sizing: border-box;
