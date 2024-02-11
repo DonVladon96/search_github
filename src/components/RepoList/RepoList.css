@@ -21,6 +21,7 @@
 .repos-card__info {
     color: #000;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .repos-card__avatar {

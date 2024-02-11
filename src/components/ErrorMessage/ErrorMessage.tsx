@@ -1,6 +1,5 @@
 import ErrorImg from '../../assets/ErrorImages.jpg'
 import './ErrorMessage.css'
-
 function ErrorMessage() {
     return (
         <div>

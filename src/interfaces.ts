@@ -99,6 +99,7 @@ export interface Item {
     watchers: number;
     default_branch: string;
     score: number;
+
 }
 
 export interface Owner {
