@@ -4,7 +4,7 @@ import axiosInstance from "./api";
 import RepoList from "./components/RepoList/RepoList";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import FavoriteRepos from "./components/FavoriteRepos/FavoriteRepos";
-import SearchInput from "./components/SearchInput.tsx";
+import SearchInput from "./components/SearchInput/SearchInput.tsx";
 import "./vendor/index.css";
 import './vendor/page/App.css'
 
