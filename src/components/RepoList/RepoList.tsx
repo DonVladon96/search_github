@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
+import repoStore from "../../store.ts";
 import { Item } from "../../interfaces";
 import "./RepoList.css";
 
@@ -6,14 +8,16 @@ interface Props {
     repos: Item[];
 }
 
-const RepoList: React.FC<Props> = ({ repos }) => {
+const RepoList: React.FC<Props> = observer(({ repos }) => {
     const [likedRepos, setLikedRepos] = useState<number[]>([]);
 
-    const handleLikeClick = (repoId: number) => {
-        if (likedRepos.includes(repoId)) {
-            setLikedRepos(likedRepos.filter((id) => id !== repoId));
+    const handleLikeClick = (repo: Item) => {
+        if (likedRepos.includes(repo.id)) {
+            setLikedRepos(likedRepos.filter((id) => id !== repo.id));
+            repoStore.removeFavoriteRepo(repo);
         } else {
-            setLikedRepos([...likedRepos, repoId]);
+            setLikedRepos([...likedRepos, repo.id]);
+            repoStore.addFavoriteRepo(repo);
         }
     };
 
@@ -33,7 +37,7 @@ const RepoList: React.FC<Props> = ({ repos }) => {
                         <a className="repos-card__url" href={repo.html_url} target="_blank">
                             {repo.html_url}
                         </a>
-                        <div className='repos-card__wrapper'>
+                        <div className="repos-card__wrapper">
                             <ul className="repos-card__elements">
                                 <li className="repos-card__list">
                                     {repo.stargazers_count ? (
@@ -55,17 +59,15 @@ const RepoList: React.FC<Props> = ({ repos }) => {
                                     className={`element__button-like ${
                                         likedRepos.includes(repo.id) ? `element__button-like_active` : ""
                                     }`}
-                                    onClick={() => handleLikeClick(repo.id)}
+                                    onClick={() => handleLikeClick(repo)}
                                 />
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             ))}
         </ul>
     );
-};
+});
 
 export default RepoList;

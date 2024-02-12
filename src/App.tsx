@@ -1,11 +1,12 @@
-import {useEffect, useState} from "react";
-import SearchInput from "./components/SearchInput";
-import {Repos, Item} from "./interfaces";
+import { useEffect, useState } from "react";
+import { Repos, Item } from "./interfaces";
 import axiosInstance from "./api";
 import RepoList from "./components/RepoList/RepoList";
-import "./vendor/index.css";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import FavoriteRepos from "./components/FavoriteRepos/FavoriteRepos.tsx";
+import FavoriteRepos from "./components/FavoriteRepos/FavoriteRepos";
+import SearchInput from "./components/SearchInput.tsx";
+import "./vendor/index.css";
+import './vendor/page/App.css'
 
 function App() {
     const [searchValue, setSearchValue] = useState<string>("");
@@ -27,11 +28,10 @@ function App() {
                         setErrorMsg("");
                     }
                 } catch (e) {
-                    setErrorMsg('Error');
+                    setErrorMsg("Error");
                 }
             }
         }
-
         fetchRepos();
     }, [searchValue]);
 
@@ -42,23 +42,15 @@ function App() {
     return (
         <div className="root-container">
             <div className="main-page">
-                <SearchInput handleChange={handleSearch}/>
-                <div className='repos'>
-                    <div className='repos__founded'>
-                        {repos.length ? (
-                            <RepoList repos={repos}/>
-                        ) : (
-                            errorMsg && <ErrorMessage/>
-                        )}
+                <SearchInput handleChange={handleSearch} />
+                <div className="repos">
+                    <div className="repos__founded">
+                        {repos.length ? <RepoList repos={repos} /> : errorMsg && <ErrorMessage />}
                     </div>
-
-                    <div className='repos__favorite'>
-                        <FavoriteRepos/>
+                    <div className="repos__favorite">
+                        <FavoriteRepos />
                     </div>
-
                 </div>
-
-
             </div>
         </div>
     );

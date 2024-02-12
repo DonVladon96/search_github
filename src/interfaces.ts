@@ -1,17 +1,3 @@
-// вместо User использую Owner
-// export interface User {
-//     readonly login: string,
-//     readonly id: number,
-//     readonly avatar_url: string,
-//     readonly public_repos: number,
-//     readonly followers: number,
-//     readonly email: string,
-//     readonly html_url: string,
-//     readonly starred_url: string,
-//     readonly stargazers_count: string,
-// }
-
-
 export interface Repos {
     total_count: number;
     incomplete_results: boolean;

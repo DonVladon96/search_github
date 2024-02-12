@@ -1,0 +1,8 @@
+.repos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.repos__founded {
+    margin-top: 50px;
+}
