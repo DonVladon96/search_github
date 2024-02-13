@@ -1,5 +1,6 @@
 # **Тестовое задание в рамках трудоустройства на позицию React Frontend Developer в компанию ООО Smartway**
 
+![preview](https://github.com/DonVladon96/search_github/blob/main/src/assets/preview.png)
 
 ### **Технологии**
 ***
