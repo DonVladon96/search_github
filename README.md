@@ -18,3 +18,8 @@
 * Webpack
 
 ### **Используется Api https://api.github.com/**
+
+https://search-github-1t59.vercel.app/
+
+### **Версия для просмотра https://search-github-1t59.vercel.app/**
+Для деплоя приложения использовался сервис vercel.com
