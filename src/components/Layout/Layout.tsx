@@ -14,7 +14,9 @@ const Layout = () => {
                 <Outlet />
             </main>
 
-            <footer className="container">&copy;2024 Петров Владислав</footer>
+            <footer className="footer__container">
+                <p className='footer__author'>&copy;2024 Петров Владислав</p>
+            </footer>
         </>
     )
 }
