@@ -1,0 +1,76 @@
+.RepoDetails-container {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RepoDetails__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.container__title {
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 0;
+    padding-bottom: 23px;
+    margin-bottom: 66px;
+    color: #FFFF;
+}
+
+.RepoDetails__text {
+    font-size: 22px;
+    line-height: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.RepoDetails__url {
+    font-size: 18px;
+    background-image: linear-gradient(
+            to right,
+            #1200ff,
+            #23cb50 50%,
+            #FFFF 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.RepoDetails__url:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.RepoDetails__url:hover {
+    background-position: 0;
+}
+
+.RepoDetails__url:hover::before {
+    width:100%;
+}
+
+.RepoDetails__url_color-white {
+    color: #ffffff;
+}

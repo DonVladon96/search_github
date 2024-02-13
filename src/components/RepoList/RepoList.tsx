@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import repoStore from "../../store.ts";
 import { Item } from "../../interfaces";
 import "./RepoList.css";
+import {Link} from "react-router-dom";
 
 interface Props {
     repos: Item[];
@@ -19,12 +20,13 @@ const RepoList: React.FC<Props> = observer(({ repos }) => {
             setLikedRepos([...likedRepos, repo.id]);
             repoStore.addFavoriteRepo(repo);
         }
+        console.log(repo.id)
     };
 
     return (
         <ul className="repos-card__container ">
             {repos.map((repo) => (
-                <div className="repos-card" key={repo.id}>
+                <Link className="repos-card" key={repo.id} to={`/${repo.id}`}>
                     <img
                         className="repos-card__avatar"
                         src={repo.owner.avatar_url}
@@ -64,7 +66,7 @@ const RepoList: React.FC<Props> = observer(({ repos }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
         </ul>
     );
