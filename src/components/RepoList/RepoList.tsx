@@ -20,7 +20,6 @@ const RepoList: React.FC<Props> = observer(({ repos }) => {
             setLikedRepos([...likedRepos, repo.id]);
             repoStore.addFavoriteRepo(repo);
         }
-        console.log(repo.id)
     };
 
     return (

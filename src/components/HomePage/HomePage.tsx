@@ -25,12 +25,7 @@ function HomePage() {
                         `/search/repositories?q=${searchValue}/`
                     );
                     setRepos(result.data.items);
-                    console.log(result);
-                    if (result.data.items.length === 0) {
-                        setErrorMsg("No repositories found");
-                    } else {
-                        setErrorMsg("");
-                    }
+                    result.data.items.length === 0 ? setErrorMsg("No repositories found") : setErrorMsg("")
                 } catch (e) {
                     setErrorMsg("Error");
                 }

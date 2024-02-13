@@ -1,22 +1,18 @@
 import React from "react";
-import { observer } from "mobx-react";
+import {observer} from "mobx-react";
 import repoStore from "../../store.ts";
-import { Item } from "../../interfaces";
+import {Item} from "../../interfaces";
 import '../RepoList/RepoList.css'
 
 interface Props {
     repo: Item;
 }
 
-const ButtonLike: React.FC<Props> = observer(({ repo }) => {
+const ButtonLike: React.FC<Props> = observer(({repo}) => {
     const likedRepos = repoStore.favoriteRepos;
 
     const handleLikeClick = () => {
-        if (likedRepos.includes(repo)) {
-            repoStore.removeFavoriteRepo(repo);
-        } else {
-            repoStore.addFavoriteRepo(repo);
-        }
+        likedRepos.includes(repo) ? repoStore.removeFavoriteRepo(repo) : repoStore.addFavoriteRepo(repo);
     };
 
     return (
