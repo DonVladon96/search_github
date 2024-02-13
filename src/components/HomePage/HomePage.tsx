@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { Repos, Item } from "../../interfaces.ts";
+import {useEffect, useState} from "react";
+import {Item, Repos} from "../../interfaces.ts";
 import axiosInstance from "../../api.ts";
 import RepoList from "../RepoList/RepoList.tsx";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
 import FavoriteRepos from "../FavoriteRepos/FavoriteRepos.tsx";
 import SearchInput from "../SearchInput/SearchInput.tsx";
+import Preloader from "../Preloader/Preloader.tsx";
 import "../../vendor/index.css";
 import '../../vendor/page/App.css'
 
@@ -12,10 +13,12 @@ function HomePage() {
     const [searchValue, setSearchValue] = useState<string>("");
     const [repos, setRepos] = useState<Item[]>([]);
     const [errorMsg, setErrorMsg] = useState<string>("");
+    const [preloader, setPreloader] = useState(false);
 
     useEffect(() => {
         async function fetchRepos() {
-            if (searchValue!== "") {
+            if (searchValue !== "") {
+                setPreloader(true);
                 try {
                     const result = await axiosInstance.get<Repos>(
                         `/search/repositories?q=${searchValue}/`
@@ -30,8 +33,10 @@ function HomePage() {
                 } catch (e) {
                     setErrorMsg("Error");
                 }
+                setPreloader(false);
             }
         }
+
         fetchRepos();
     }, [searchValue]);
 
@@ -42,13 +47,16 @@ function HomePage() {
     return (
         <div className="root-container">
             <div className="main-page">
-                <SearchInput handleChange={handleSearch} />
+                <SearchInput handleChange={handleSearch}/>
+
                 <div className="repos">
-                    <div className="repos__founded">
-                        {repos.length? <RepoList repos={repos} /> : errorMsg && <ErrorMessage />}
-                    </div>
+                    {preloader && <Preloader/>}
+                    {!preloader && <div className="repos__founded">
+                        {repos.length ? <RepoList repos={repos}/> : errorMsg && <ErrorMessage/>}
+                    </div>}
+
                     <div className="repos__favorite">
-                        <FavoriteRepos />
+                        <FavoriteRepos/>
                     </div>
                 </div>
             </div>

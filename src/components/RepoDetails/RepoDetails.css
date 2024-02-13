@@ -10,6 +10,11 @@
     flex-direction: column;
 }
 
+.RepoDetails-container__navigate {
+    display: flex;
+    gap: 40px;
+}
+
 .container__title {
     display: flex;
     flex-direction: column;
@@ -74,3 +79,29 @@
 .RepoDetails__url_color-white {
     color: #ffffff;
 }
+
+
+.button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 64px;
+    height: 64px;
+    opacity: .8;
+}
+
+.button:hover {
+    background-color: #8820fc;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    width: max-content;
+    color: white;
+    width: 64px;
+    height: 64px;
+    opacity: 1;
+}
+

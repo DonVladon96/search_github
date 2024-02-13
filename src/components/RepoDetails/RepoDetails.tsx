@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../api.ts";
 import { Item } from "../../interfaces.ts";
 import './RepoDetails.css'
+import icon from "../../assets/back-icon.png";
 
-
-
-const RepoDetails: React.FC = () => {
+const RepoDetails = () => {
     const { id } = useParams();
     const [repo, setRepo] = useState<Item | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchRepoDetails() {
@@ -26,15 +26,29 @@ const RepoDetails: React.FC = () => {
         return <div>Loading...</div>;
     }
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return (
         <div className='RepoDetails-container'>
-            <img
-                className="repos-card__avatar"
-                src={repo.owner.avatar_url}
-                alt="User Avatar"
-                width="300"
-                height="180"
-            />
+
+            <div className='RepoDetails-container__navigate'>
+                <div className=''>
+                    <button onClick={handleGoBack} className="button">
+                        <img src={icon} alt={"Ручка назад"}></img>
+                    </button>
+                </div>
+
+                <img
+                    className="repos-card__avatar"
+                    src={repo.owner.avatar_url}
+                    alt="User Avatar"
+                    width="300"
+                    height="180"
+                />
+            </div>
+
             <h2 className='container__title'>{repo.full_name}</h2>
             <p className='RepoDetails__text'>{repo.description}</p>
             <p className='RepoDetails__text'>Stars: {repo.stargazers_count}</p>
@@ -58,10 +72,12 @@ const RepoDetails: React.FC = () => {
                 <p className='RepoDetails__text RepoDetails__url'>Organizations URL: {repo.owner.organizations_url}</p>
                 <p className='RepoDetails__text RepoDetails__url'>Repos URL: {repo.owner.repos_url}</p>
                 <p className='RepoDetails__text RepoDetails__url'>Events URL: {repo.owner.events_url}</p>
-                <p className='RepoDetails__text RepoDetails__url'>Received Events URL: {repo.owner.received_events_url}</p>
+                <p className='RepoDetails__text RepoDetails__url'>Received Events
+                    URL: {repo.owner.received_events_url}</p>
                 <p className='RepoDetails__text'>Type: {repo.owner.type}</p>
                 <p className='RepoDetails__text RepoDetails__url'>Site Admin: {repo.owner.site_admin ? "Yes" : "No"}</p>
             </div>
+
         </div>
     );
 };

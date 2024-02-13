@@ -148,3 +148,20 @@
     background-image: url(../../assets/like_active.svg);
 }
 
+.repos-card__button {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8820fc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.repos-card__button:hover {
+    background-color: #1ac880;
+}
+
+
+

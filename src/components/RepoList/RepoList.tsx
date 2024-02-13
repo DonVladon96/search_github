@@ -26,7 +26,7 @@ const RepoList: React.FC<Props> = observer(({ repos }) => {
     return (
         <ul className="repos-card__container ">
             {repos.map((repo) => (
-                <Link className="repos-card" key={repo.id} to={`/${repo.id}`}>
+                <div className="repos-card" key={repo.id}>
                     <img
                         className="repos-card__avatar"
                         src={repo.owner.avatar_url}
@@ -65,8 +65,9 @@ const RepoList: React.FC<Props> = observer(({ repos }) => {
                                 />
                             </div>
                         </div>
+                        <Link to={`/${repo.id}`} className="repos-card__button">About</Link>
                     </div>
-                </Link>
+                </div>
             ))}
         </ul>
     );
