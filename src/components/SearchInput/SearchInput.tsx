@@ -12,9 +12,9 @@ const SearchInput = ({handleChange}: Props) => {
     };
 
     return (
-        <div className='searchform__find'>
+        <>
             <input className="searchform__input" type="text" name="text" required placeholder="Search" onChange={debounce(handleInputChange, 1000)}/>
-        </div>
+        </>
     );
 };
 

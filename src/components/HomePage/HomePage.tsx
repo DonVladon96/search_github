@@ -6,6 +6,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
 import FavoriteRepos from "../FavoriteRepos/FavoriteRepos.tsx";
 import SearchInput from "../SearchInput/SearchInput.tsx";
 import Preloader from "../Preloader/Preloader.tsx";
+import CopyButton from "../CopyButton/CopyButton.tsx";
 import "../../vendor/index.css";
 import '../../vendor/page/App.css'
 
@@ -47,7 +48,11 @@ function HomePage() {
     return (
         <div className="root-container">
             <div className="main-page">
-                <SearchInput handleChange={handleSearch}/>
+                <div className='searchform__find'>
+                    <SearchInput handleChange={handleSearch}/>
+                    <CopyButton text={searchValue} />
+                </div>
+
 
                 <div className="repos">
                     {preloader && <Preloader/>}
